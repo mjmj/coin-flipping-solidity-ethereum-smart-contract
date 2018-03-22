@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "web3": "1.0.0-beta.30",
+    "ethereumjs-util": "4.5.0"
+  },
+  "name": "ethereum",
+  "version": "1.0.0",
+  "description": "",
+  "main": "temp.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
