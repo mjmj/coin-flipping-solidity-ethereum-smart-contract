@@ -1,29 +1,30 @@
 contract Flipper {
 
-    enum GameState {noWager, wagerMade, wagerAccepted}
-    // defined a datatype called gamestate that is an enumeration that
-    // only accepts 3 value types. Great for state-machines
+  enum GameState {noWager, wagerMade, wagerAccepted}
+  GameState public currentState;
 
-    GameState public currentState;
+  modifier onlyState(GameState expectedState) { if(expectedState == currentState) { _; } else { throw; } }
 
-    function Flipper() {
-        currentState = GameState.noWager;
-    }
+  function Flipper() {
+    currentState = GameState.noWager;
+  }
 
-    function transitionGameState(bytes32 targetState) return (bool) {
-        if (targetState == "noWager") {
-            currentState = GameState.noWager;
-            return true;
-        }
-        else if (targetState == 'wagerMade') {
-            currentState = GameState.wagerMade;
-            return true;
-        }
-        else if (targetState == 'wagerAccepted') {
-            currentState == GameState.wagerAccepted;
-            return true;
-        }
+  function makeWager() onlyState(GameState.noWager) returns (bool) {
+    // ...
+    currentState = GameState.wagerMade;
+    return true;
+  }
 
-        return false;
-    }
+  function acceptWager() onlyState(GameState.wagerMade) returns (bool) {
+    // ...
+    currentState = GameState.wagerAccepted;
+    return true;
+  }
+
+  function resolveBet() onlyState(GameState.wagerAccepted) returns (bool) {
+    // ...
+    currentState = GameState.noWager;
+    return true;
+  }
+
 }

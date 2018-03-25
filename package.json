@@ -1,15 +1,11 @@
 {
   "dependencies": {
-    "web3": "1.0.0-beta.30",
-    "ethereumjs-util": "4.5.0"
+    "web3": "0.20.6"
   },
-  "name": "ethereum",
+  "name": "coin-flipping-smart-contract",
   "version": "1.0.0",
   "description": "",
   "main": "temp.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
+  "author": "Michael Merritt",
   "license": "ISC"
 }

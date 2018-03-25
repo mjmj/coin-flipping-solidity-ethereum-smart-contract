@@ -35,10 +35,7 @@ class Helpers {
     const contractName = this.contractName(source);
     const contractToDeploy = compiled.contracts[`:${contractName}`];
     const bytecode = contractToDeploy.bytecode;
-    // const bytecode = compiled.contracts[`:${contractName}`].bytecode﻿;
     const abi = JSON.parse(contractToDeploy.interface);
-    // const bytecode = compiled.contracts[":" + contractName].bytecode;
-    // const abi = JSON.parse(compiled.contracts[":" + contractName].interface);
     const contract = global.web3.eth.contract(abi);
     const gasEstimate = global.web3.eth.estimateGas({ data: bytecode });
     const contractTx = {
@@ -50,7 +47,8 @@ class Helpers {
     const deployed = contract.new(Object.assign(
       {},
       contractTx,
-      options), (error, result) => { });
+      options
+    ), (error, result) => { });
     return deployed;
   }
 
